@@ -1,0 +1,557 @@
+---
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - नमस्ते 
+      - haii
+      - नमस्कार
+      - haaaiii
+      - hello
+      - hi
+      - हाई 
+      - hello there
+      - good morning
+      - good evening
+      - hey there
+      - let's go
+      - हेल्लो
+      - hey dude
+      - goodmorning
+      - शुभ प्रभात
+      - goodevening
+      - good afternoon
+
+  - intent: out_of_scope
+    examples: |
+      - I want to order food
+      - म खाना मगाउँन चाहन्छु
+      - What is 2 + 2?
+      - Who's the US President?
+      - where is sea?
+      - म स्कुल जान्छु
+      - i want to see cinema
+      - i want to go gym
+      - जिम सेन्टर कहाँ छ
+      - where is gym centre?
+      - I love pizza.
+      - म पिज्जा खान चाहन्छु
+      - love is in the air
+      - मलाई पिज्जा खान मन छ 
+      - go to school
+      - म स्कुल जान्छु
+      - remember to love
+      - मलाई फूटबल खेल्न मन छ
+      - मलाई बल खेल्न मन छ
+      - i want to live in sydney
+      - i love pizza.
+      - i am alcoholic
+      - घर कसरी जाने
+      - i want to know about but ticket price
+      - playing football is awesome experience
+      - go jumba class that is beneficial
+      - loving ownself is greatest gift one can get
+  - intent: ask_minutes
+    examples: |
+      - remind me to send money to [Dipesh](PEOPLE) in [5](min) minutes
+      - [दिपेश](PEOPLE) लाई पैसा पठाउन [५](min) minutes मा सम्जाउ
+      - later I have to send money to [Mukesh](PEOPLE) in [30](min) minutes
+      - Please, remind me to send money to [Rakesh](PEOPLE) in [3](min) minutes
+      - कृपया राकेश लाई पैसा पठाउन १ minutes मा सम्जाउ 
+      - please remind me to send money to [Sunita](PEOPLE) in [9](min) minutes
+      - I must not forget to send money to [Monica](PEOPLE)[40](min) minutes
+      - मैले [रिता](PEOPLE) लाई [३०](min) minutes म पैसा पठाउन बिर्सन हुन्न 
+      - I have to send money to [Ruchi](PEOPLE)[59](min) minutes
+      - मैले [रुची](PEOPLE) लाई [५०](min) minutes मा पैसा पठाउनु पर्छ
+      - मलाई [रुची](PEOPLE) लाई [५०](min) minutes मा पैसा पठाउनु सम्जाउ 
+
+  - intent: fund_transfer_by_text
+    examples: |
+      - want to transfer fund
+      - पैसा पठाउन चाहन्छु 
+      - transfer fund
+      - पैसा पठाउने 
+      - fund transfer
+      - पठाउने पैसा 
+      - send money
+      - wanna send money
+      - can you send money?
+      - के तिमी पैसा पठाउन सक्छौ ?
+      - help me to transfer money
+      - कृपया मलाई पैसा पठाउन सहयोग गर्नुन
+      - help me to transfer money
+      - i want to transfer money
+      - i want to send money
+      - म पैसा पठाउन चाहन्छु
+      - I want to transfer money
+      - I want to pay someone
+      - can I pay someone
+      - के म कसैलाई पैसा तिर्न सक्छु ? 
+      - के म कसैलाई पैसा तिर्न सक्छु
+      - pay my friend
+      - transfer money
+      - need to transfer money
+      - i want to transfer money please
+      - i mean i want to transfer money
+      - मत्लब म पैसा पठाउन चाहन्छु
+      - I need to pay a friend.
+      - म साथीलाई पैसा पठाउन चाहन्छु
+      - i want to transfer money please
+      - need to transfer money
+      - I need to transfer money to a friend
+  
+  - intent: bal_enquiry_by_text
+    examples: |
+      - want to enquire my balance in my account
+      - म मेरो खातमा कती रकम छ बुजन चाहन्छु 
+      - म मेरो खातमा कती amount छ बुजन चाहन्छु 
+      - want to enquire balance
+      - कती रकम छ बुजन चाहन्छु
+      - कती amount छ बुजन चाहन्छु
+      - ब्यालेन्स बुज्न चाहन्छु 
+      - balance बुज्न चाहन्छु 
+      - रकम बुज्न चाहन्छु 
+      - enquire balance
+      - want to know balance
+      - मेरो खतामा कती रकम छ ?
+      - मेरो खतामा कती amount छ ?
+      - how much money in my accountr?
+      - can you help me to know a current balance in my account?
+      - i want to know my current balance
+      - please help me to know my current balance
+      - balance enquiry
+      - i want to enquire about my current balance
+      - म मेरो खातमा कती current amount छ बुजन चाहन्छु
+      - म मेरो खातमा कती कती रकम छ बुजन चाहन्छु
+
+  - intent: ask_forget_reminders
+    examples: |
+      - Forget about the reminder
+      - do not remind me
+      - मलाई नसम्जाउ
+      - cancel the reminder
+      - cancel all reminders please
+      - रीमाइन्डर बन्द गर
+      - कृपया रीमाइन्डर बन्द गर 
+      - कृपया reminder बन्द गर
+
+  - intent: faq/internetbanking
+    examples: |
+      - What is internet banking?
+      - इन्टर्नेट बेन्किङ भनेको के हो ?
+      - Internet banking भनेको के हो ?
+      - Why we should use internet banking?
+      - हामीले इन्टर्नेट बेन्किङ किन use गर्ने ?
+      - हामीले इन्टर्नेट बेन्किङ किन प्रयोग गर्ने ? 
+      - Is internet banking convenient?
+      - Could you tell me about internet banking?
+      - मलाई इन्टर्नेट बेन्किङ को बारेमा भनन
+      - मलाई इन्टर्नेट बेन्किङ को बारेमा छोट्कारीमा भनन 
+      - Please tell me about internet banking.
+  - intent: faq/secureinternetbanking
+    examples: |
+      - How secure is internet banking?
+      - इन्टर्नेट बेन्किङ कतिको सुरक्छित छ ?
+      - Internet banking कतिको सुरक्छित छ ? 
+      - Is internet banking reliable?
+      - ईन्टरनेट बैंकइङ भर्पर्दो छ ? 
+      - के ईन्टरनेट बेन्किङ भर्पर्दो छ ?
+      - How internet banking is secure?
+      - ईन्टरनेट बेन्किङ कसरी भर्पर्दो छ ?
+      - Can internet banking could be hacked?
+      - ईन्टरनेट बेन्किङ लाई ह्यक गर्न सकिन्छ ?
+      - ईन्टरनेट बेन्किङ लाई hack गर्न सकिन्छ ?
+      - Please tell me how secure is internet banking.
+  - intent: faq/practiceinfosafe
+    examples: |
+      - What practices can I adopt to help keep my online information safe?
+      - कस्तो कृयाकलाप गर्दा इन्टर्नेट बेन्किङ सुरक्छित हुन्छ ? 
+      - कस्तो कृयाकलाप गर्दा इन्टर्नेट बेन्किङ safe हुन्छ ? 
+      - How to make my internet banking experience safe?
+      - मेरो इन्टेर्नेट बेन्किङ को अनुभव कसरी सुरक्षित बनौने ?
+      - How to keep my information safe?
+      - Can you suggest me a way to keep my online information safe?
+      - मैले आफ्नो इन्टेर्नेट बेन्किङ को सुचना कसरी सुरक्छित बनौने
+      - Please suggest me a way to keep my online information safe.
+      -  कृपया मैले आफ्नो इन्टेर्नेट बेन्किङ को सुचना कसरी सुरक्छित बनौने भनिदिनुस
+  - intent: faq/visitingsecuredinternetsite
+    examples: |
+      - How do I know if I am visiting a secured internet site?
+      - What is a sign of secured internet site?
+      - How your site is secure for visiting?
+      - Is this site is secure for internet site?
+  - intent: faq/transaction
+    examples: |
+      - What are the transactions that I can do online?
+      - के के लेन्देन म अन्लाईन गर्न सक्छु ? 
+      - Types of transaction that i can do online?
+      - अन्लाईन गर्न सकिने लेन्देन के के हो ? 
+      - What types of transaction that bank provides?
+      - बेन्कले कस्तो कस्तो लेन्देन प्रधान गर्छ ? 
+      - Please suggest me about many transaction that i can do.
+  - intent: faq/bankingservice
+    examples: |
+      - What are the different banking services that I can make online?
+      - बिभिन्न थरिका बेन्किङ सेवाहरु के के हुन ? 
+      - What are the different banking service that this bank provides?
+      - Types of banking service that this bank provides?
+      - Please tell me about your banking service.
+      - कृपया के के बेन्किङ सेवाहरु उपलब्द छ भनिदिनुस ? 
+  - intent: faq/fundtransfer
+    examples: |
+      - What are the kinds of fund transfers I can perform on the site?
+      - कुन कुन फन्ड ट्रान्स्फर यो वेबसाईट मा गर्न सकिन्छ ?
+      - How many types of fund transfer i can perform in this bank?
+      - म कुन कुन फन्ड ट्रान्स्फर गर्न सक्छु ? 
+      - म कुन कुन fund transfer गर्न सक्छु ? 
+      - What are the different fund transfer service this bank provides?
+      - कुन कुन फन्ड ट्रान्स्फर बैंकले गर्न सक्छ ? 
+      - Please tell me about types of fund transfer service available in the bank.
+  
+  - intent: faq/onetimepassword
+    examples: |
+      - What is One Time Password (OTP)?
+      - ओन टाईम पास्वर्ड  भनेको क हो ?
+      - one time password भनेको क हो ?
+      - OTP भनेको क हो ?
+      - Why one time password is used?
+      - ओन टाईम पास्वर्ड  किन प्रयोग गरिन्छ ?
+      - How one time password make our banking experience safe?
+      - ओन टाईम पास्वर्ड ले बैंकइङ अनुभब लाई सुरक्छित कसरी बनौछ ? 
+      - Please suggest me why one time password used.
+  - intent: faq/otpwhenusernameandpasswordisgiven
+    examples: |
+      - Why should I enter OTP when I have entered my Username and login
+        Password?
+      - Is it necessary to enter otp when i have entered my username and login
+        password?
+      - How entering otp after entering my username and login password is                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     necessary?
+  - intent: faq/askedtoenterotp
+    examples: |
+      - When will I be asked to enter OTP?
+      - मैले कुन्बेल OTP हन्नुपर्छ ?
+      - When otp shoulb be enter?
+      - OTP कुन्बेला हन्नुपर्छ ? 
+      - When otp is asked to enter?
+  - intent: faq/sameotpmultipletimes
+    examples: |
+      - Can I use the same OTP multiple times?
+      - मैले एउटै OTP प्रयोग गर्न पौछु ?
+      - How many times i can enter same otp?
+      - मैले कतिपटक एउटै OTP प्रयोग गर्न पौछु ? 
+      - Does entering same otp multiple times work?
+      - एउटै OTP पुन प्रयोग गर्न पौछु ?
+
+  - intent: faq/forgetusernameorpassword
+    examples: |
+      - What if I forget my internet banking username or password?
+      - यदि मैले मेरो इन्टरनेट बैंकिङ प्रयोगकर्ता नाम वा पासवर्ड बिर्सें भने के हुन्छ?
+      - यदि मैले मेरो इन्टरनेट बैंकिङ युजर आइडी वा पासवर्ड बिर्सें भने के हुन्छ?
+      - मैले मेरो इन्टरनेट बैंकिङ userid र password बिर्सें भने के गर्ने?
+      - What should I do if I forget my banking username and password?
+      - Can I use banking if i forget my banking username and password?
+  # - intent: faq/changeusernameandpassword
+  #   examples: |
+  #     - Can I change my username and password?
+  #     - How can I change my username and password?
+  #     - Is there a way to change my username and password?
+  #     - Please suggest a way to change my username and password?
+  # - intent: faq/statement
+  #   examples: |
+  #     - I need a statement from over one year ago? What do I do?
+  #     - How can I access my banking statement of a one year?
+  #     - Please suggest me a way to get my banking statement?
+  # - intent: faq/esewapayment
+  #   examples: |
+  #     - Where can I find esewa payment?
+  #     - How esewa payment can be accessed in internet banking?
+  #     - Does esewa payment available in mobile banking?
+  # - intent: faq/paymentunsuccessful
+  #   examples: |
+  #     - My payment was not done, though I had scheduled it.
+  #     - What should i do if my payment was not done although i had sheduled?
+  # - intent: faq/bestbrowser
+  #   examples: |
+  #     - What is the best browser that I can use?
+  #     - Suggest me a best browser to use internet banking?
+  #     - Is there a list of best browser to use?
+  # - intent: faq/savingmypayment
+  #   examples: |
+  #     - How can saving my payments help? How can I do it?
+  #     - Why should i save my payments?
+  #     - Can you suggest me how saving my payments help?
+  # - intent: faq/favoriteaccount
+  #   examples: |
+  #     - What are favorite accounts? How can it save my time and memory?
+  #     - Why we should use favorite accounts?
+  #     - Please say some benifits of favorite accounts.
+  # - intent: faq/wherecontact
+  #   examples: |
+  #     - Where do i contact?
+  #     - Where can i contact?
+  #     - Please suggest where i can contact?
+  # - intent: faq/onlinemerchant
+  #   examples: |
+  #     - How do I pay to my online merchant like qfx, yeti air?
+  #     - From where i can pay my online merchant like qfx, nepal air?
+  #     - Is online merchant payment available?
+  # - intent: faq/messagefrombank
+  #   examples: |
+  #     - Do i get any message from bank?
+  #     - When i get message from bank?
+  #     - Please tell me when i get message from bank.
+  # - intent: faq/requestcheckbook
+  #   examples: |
+  #     - How can I request a cheque book?
+  #     - Where can i request check book?
+  #     - please tell me from where i can get cheque book.
+  # - intent: faq/travelabroad
+  #   examples: |
+  #     - I need to travel abroad, how can I use online banking safe? Do I get OTP?
+  #     - How can i use online banking when i am abroad?
+  #     - Please suggest me a way to use online banking when i am abroad?
+  # - intent: faq/lostmobile
+  #   examples: |
+  #     - I lost my mobile what do i do to use online banking?
+  #     - What should i do to use mobile banking if mobile phone is lost?
+  #     - please suggest how to use mobile banking if i lost my mobile phone.
+  # - intent: faq/changemobilenumber
+  #   examples: |
+  #     - I changed my mobile number how can I continue?
+  #     - How to continue using service if i change my mobile number?
+  #     - Please suggest a way to use service when i change a mobile number.
+  # - intent: faq/dontusemobile
+  #   examples: |
+  #     - I don't use mobile? Can I still use online transaction?
+  #     - How to use online banking when i do not use mobile?
+  #     - Please suggest a way to use online banking when i don't have mobile.
+  # - intent: faq/completeonlinetransaction
+  #   examples: |
+  #     - What do I do after I complete my online transaction or statement?
+  #     - Please suggest what should i do when i complete my online transaction.
+  #     - What should i do if i complete my online transaction?
+  # - intent: faq/reducecost
+  #   examples: |
+  #     - What can online banking reduce my cost and time, yet provide my safety?
+  #     - How online banking reduce my cost and time, yet provide safety?
+  #     - Please suggest how online banking reduce my cost and time.
+
+  # - intent: affirm
+  #   examples: |
+  #     - indeed
+  #     - correct
+  #     - that sounds good
+  #     - yes
+  #     - yess please
+  #     - of course
+  #     - yup
+  #     - yeah
+  #     - yes please
+  #     - yes plz
+  #     - Sure
+  #     - Ok
+  #     - sweet
+  #     - cool,
+  #     - yes...
+  #     - y
+  #     - ok
+  #     - ye
+  #     - okay
+  #     - That would be great
+  #     - YES
+  #     - YUP
+  #     - Yea
+  #     - Yeah
+  #     - Yeah sure
+  #     - Yep
+  #     - Yep that's fine
+  #     - Yep!
+  #     - Yepp
+  #     - Yes
+  #     - Yes I do
+  #     - Yes please
+  #     - Yes please!
+  #     - Yes, I accept
+
+  # - intent: deny
+  #   examples: |
+  #     - not really
+  #     - no
+  #     - I don't think so
+  #     - never
+  #     - no way
+  #     - nope
+  #     - no thanks
+  #     - I dunno
+  #     - Nothing!
+  #     - nevermind
+  #     - i wanna cancel transaction
+  #     - i decline
+  #     - i don not like this
+  #     - i don't think so
+  #     - i don't want either of those
+  #     - i don't want to continue transaction
+  #     - i don't want to give you my email
+  #     - i dont want to continue
+  #     - i dont want to accept :P lol
+  #     - i guess it means - no
+  #     - i'm afraid not
+  #     - i'm not sure
+
+  - lookup: place
+    examples: |
+      - wiseyak inc
+      - godawori
+      - thirbam sadak
+      - lagankhel
+      - nabil bank
+      - bhadrakali
+      - ratnapark
+      - naxal
+      - koteswor
+      
+  - intent: location
+    examples: |
+      - I want a location of nearest atm near [wiseyak inc](place)
+      - मलाई [wiseyak inc](place) नजिकको atm देखाउ
+      - Please tell me the nearest atm location near [thirbam sadak](place)
+      - कृपया मलाई [thirbam sadak](place) नजिकको atm देखैदेउ
+      - nearest atm near [godawori](place)
+      - atm near [lagankhel](place)
+      - [lagankhel](place) नजिकको atm देखाउ
+      - [wiseyak inc](place)
+      - [chitwon](place)
+      - tell me the location of nearest atm near [nabil bank](place)
+      - what is the location of nearest atm near [ratnapark](place)
+      - can you tell me the nearest location of atm near [bhadrakali](place) ?
+      - के तिमी मलाई [lagankhel](place) नजिकैको atm देखाउन सक्छौ ?
+
+  - regex: receiver_acc
+    examples: |
+      - \d{6,14}
+  - intent: send_money
+    examples: |
+        - I want to pay[121233](receiver_acc)
+        - म [121233](receiver_acc) लाई पठाउन चाहन्छु
+        - I want to pay [121233](receiver_acc)
+        - म साथीलाई पैसा तिर्न चाहन्छु [123456](receiver_acc)
+        - I want to transfer to[354555](receiver_acc)
+        - can i transfer money to [111111](receiver_acc)
+        - के म पैसा पठाउन सक्छु [111111](receiver_acc)
+        - can I transfer money my mother  to [234567](receiver_acc)
+        - के म पैसा पठाउन सक्छु ? [234567](receiver_acc)
+        - pay mukesh silwal  to [333333](receiver_acc)
+        - मुकेश सिल्वाल लाई यो [333333](receiver_acc) मा तिर्नुहोस
+        - I need to make an urgent transfer to [363636](receiver_acc) Dipesh Silwal, can you do it?
+        - म यो [331133](receiver_acc) नम्बर लाई तुरुन्त पैसा तिर्न चाहन्छु 
+        - Ahh, okay so I want to make a transfer to [222222](receiver_acc) to bikash mallick.
+        - transfer to[333333](receiver_acc)
+        - transfer to [333333](receiver_acc)
+        - यस्मा [333333](receiver_acc) पठाउने
+        - [444444](receiver_acc)
+        - pay to [112233](receiver_acc)
+        - [112233](receiver_acc) मा तिर्नुहोस
+        - pay to[112233](receiver_acc)
+        - [222222](receiver_acc) भुक्तानी गर्ने 
+        - यस्मा तिर्ने [222222](receiver_acc)
+        - [222227](receiver_acc)लाई तिर्नुपर्‍यो
+        - [222227](receiver_acc)लाई पैसा तिर
+        - 
+
+  - regex: amount_money
+    examples: |
+      - \d{2,5}
+  - intent: amount
+    examples: |
+        - Rs [1000](amount_money).
+        - रु [2000](amount_money)
+        - amount is rs [5000](amount_money).
+        - रु[2000](amount_money) यती रकम पठाउन चाहन्छु
+        - रु [2000](amount_money) यती amount पठाउन चाहन्छु
+        - I wanna send amount rs[1111](amount_money).
+        - it is rs[5555](amount_money).
+        - i wanna transfer rs [50056](amount_money).
+        - म रु [20000](amount_money) पठाउन चाहन्छु
+        - म रु [20000](amount_money) send गर्न चाहन्छु
+        - म rs [20000](amount_money) send गर्न चाहन्छु
+        - amount i wanna send is rs [670](amount_money)
+        - रकम रु [12222](amount_money)
+        - money रु [12222](amount_money)
+        - money is rs [200](amount_money)
+        - amount to be transferred is rs [50000](amount_money)
+        - rs[200](amount_money)
+        - rs [44444](amount_money)
+        - money is rs[3000](amount_money)
+        - money is rs[3000](amount_money)
+        - send गर्नुपर्ने रकम rs [200000]
+        - send rs[22266](amount_money)
+        - रु[1000](amount_money) पठाउ
+        - रु[33333](amount_money) पठाउनु
+        - तिर्नुपर्ने रकम रु [20000](amount_money)
+        - तिर्नुपर्ने amount रु [20000](amount_money)
+
+  - regex: pin_number
+    examples: |
+        - "[0-9]{3}"
+  - intent: pin
+    examples: |
+        - pin is [111](pin_number)
+        - पिन [111](pin_number) यो हो 
+        - my pin is [222](pin_number)
+        - मेरो पिन [222](pin_number) हो
+        - here is my pin number [113](pin_number)
+        - this is my pin number [244](pin_number)
+        - pin number is [777](pin_number)
+        - [999](pin_number)
+        - [000](pin_number)
+        - [123](pin_number)
+        - [222](pin_number)
+        - [333](pin_number)
+        - [555](pin_number)
+        - [111](pin_number)
+
+  - intent: info_faq
+    examples: |
+        - What information do you provide about faq?
+        - कुन कुन faq बारेमा सुचना दिन्छौ ? 
+        - faq information
+        - faq सुचना
+        - tell me about the answer you provide about faq
+        - information about faq questions
+        - arena of faq question
+        - कुन कुन faq टपिक को बारेमा सुचना दिन्छौ ?
+        - list of faq questions
+        - topic faq cover
+        - topic of question in faq question answerng
+
+  - intent: about_services
+    examples: |
+        - what services do you provide?
+        - कुन कुन सेवाहरु दिन्छौ ? 
+        - services you provide
+        - bot services
+        - what is bot services?
+        - बोट को सर्विस के के हो ?
+        - बोट को service के के हो ?
+        - what you provide as a service?
+        - what is your working arena?
+        - तिमी के के काम गर्न सक्छौ ?
+
+  - intent: goodbye
+    examples: |
+      - good bye
+      - धन्यवाद
+      - धेरै धेरै धन्यवाद 
+      - बाइ
+      - good night
+      - bye
+      - thank you
+      - thank you so much
+      - thanks alot
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - बाई बाई 
+      - see you later

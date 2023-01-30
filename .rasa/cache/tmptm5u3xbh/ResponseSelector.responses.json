@@ -1,0 +1,152 @@
+{
+  "utter_faq/internetbanking": [
+    {
+      "text": "{ \"en\":\"Internet Banking is a convenient and safe transaction banking service offered online. You can use Internet Banking to make fund transfers, pay bills or view statements through the Internet. \"}"
+    }
+  ],
+  "utter_faq/secureinternetbanking": [
+    {
+      "text": "We take every precaution to make your online banking experience safe and secured. Internet Banking offers optimal protection of your account through our Web Server Security SSL (Secure Socket Layer) to create encrypted link between web server and browser. Encryption is a process that transforms sensitive information into unrecognizable characters before they are sent over the Internet and helps keep your information private between the bank’s computer system and your internet browser. "
+    }
+  ],
+  "utter_faq/practiceinfosafe": [
+    {
+      "text": "Safe and secured online experience demands that you engage into the following practices to safe- guard your online information. a. Beware of phishing scams Make sure that you always login to your internet banking account directly via your bank website, and not through links that are not from your bank. b. Have strong passwords Make sure that you create strong passwords which are at least 8 characters long having capital letters, numbers, and special characters such as @, #, &, !, etc. Intruders can easily hack weak passwords. Also regularly change your passwords. c. Secure your email accounts Set strong passwords for your email accounts because cybercriminals can easily pilfer your sen sitive information. Ensure that the passwords are unique and different from your social network ing accounts. d. Refrain from performing banking transactions over unsecured wireless networks/ public computers Because wireless networks have weak security settings, it is important that you review and en hance your wireless (Wi-Fi) network settings. e. Use virtual Keyboard in Login Panel Virtual Keyboard is the precautionary measure that protects you against malicious key logger programs which might have infected your computer. We strongly advise you to use it in case you are doing internet banking login from different computer. f. Secure your devices Password protects your mobile phones, tablets or PCs. Have strong passwords and security PINs for these devices.g. Switch to statements Intruders can gain access to your paper documents having sensitive information including your banking details. Therefore ensure that you make use of statements and secure them so that they cannot be stolen. Don’t engage in communication with unsolicited emails or correspondence that requests your personal banking information. Ensure that you always log out of your account and close the browser once you are done. Update all your browsers, operating systems, apps and virus, and malware protection software. "
+    }
+  ],
+  "utter_faq/visitingsecuredinternetsite": [
+    {
+      "text": "Our online banking site address starts with https: which is a strong indication that it is safe and secure. Hypertext Transfer Protocol Secure (HTTPS) is a communications protocol for secure communication over a computer network. Additionally, the VeriSign logo on the login page is also an indication that the site you are about to visit is secured. "
+    }
+  ],
+  "utter_faq/transaction": [
+    {
+      "text": "You can perform a variety of transactions as the ones listed below: a. Fund transfers • Transfer fund between your own bank accounts • Transfer funds to any of your bank accounts b. Bill payment c. Top-up/ recharge cards"
+    }
+  ],
+  "utter_faq/bankingservice": [
+    {
+      "text": "a. View statement b. Request account statement c. Cheque book request d. Cheque stop request e. Manage linked accounts"
+    }
+  ],
+  "utter_faq/fundtransfer": [
+    {
+      "text": "You can perform two types of fund transfer activities on the site. They are: a. Transfer fund between your own bank accounts b. Transfer funds to any of your bank accounts "
+    }
+  ],
+  "utter_faq/separateregistrationform": [
+    {
+      "text": "No, once you are registered as an internet banking customer, you are automatically entitled to Internet Banking bill payment service."
+    }
+  ],
+  "utter_faq/onetimepassword": [
+    {
+      "text": "One Time Password (OTP) is an additional security feature added to secure your account from online fraud. OTP is sent to your mobile phone before you can perform fund transfer or online transactions. OTP is confidential and must not be shared with anyone—not even if the person who claims to be a bank official. You have to enter the OTP within 3 minutes of receiving it through SMS to complete fund transfer or online transaction. Make sure you read the details of the message sent to you through SMS along with the OTP. "
+    }
+  ],
+  "utter_faq/otpwhenusernameandpasswordisgiven": [
+    {
+      "text": "This is for extra security and protection of your account from fraud. "
+    }
+  ],
+  "utter_faq/askedtoenterotp": [
+    {
+      "text": "You will be asked to enter OTP before you can make fund transfer or online transactions. "
+    }
+  ],
+  "utter_faq/sameotpmultipletimes": [
+    {
+      "text": "No, a single OTP is sent to you before you can perform a single fund transfer activity or a single online transaction. You cannot use the same OTP multiple times because we generate and send you unique OTPs for every transaction or fund transfer activity. "
+    }
+  ],
+  "utter_faq/forgetusernameorpassword": [
+    {
+      "text": "You must contact your bank to get a new username and password."
+    }
+  ],
+  "utter_faq/changeusernameandpassword": [
+    {
+      "text": "You can only change the login password, not the username. Your bank official may also change your password upon request or in case you forget your password."
+    }
+  ],
+  "utter_faq/statement": [
+    {
+      "text": "You need to go to AC Statement on the site after you log in. Then select “Statement” and adjust the date on the right and enter your account number to get the statement of the required period of time. "
+    }
+  ],
+  "utter_faq/esewapayment": [
+    {
+      "text": "You can go to “Bill Payment”, click the first option i.e. “Bill Payment” to make esewa payment. Click on Select One in the “Pay For” field where you can se- lect “ESEWA” to make the necessary payment. "
+    }
+  ],
+  "utter_faq/paymentunsuccessful": [
+    {
+      "text": "In such cases, you will have attempt the payment manually or you will have to contact your bank at the nearest counter. "
+    }
+  ],
+  "utter_faq/bestbrowser": [
+    {
+      "text": "You can use browsers such the Google Chrome or Mozilla Firefox, Edge, Safari for best online banking experience. Please ensure that the browser you use is up-to-date. We do not recommend Internet Explorer for internet banking."
+    }
+  ],
+  "utter_faq/savingmypayment": [
+    {
+      "text": "Saving my payments allows me to link my payments with my favorite name. So once I get the details of the payment with amount, merchant name, and numbers; I can link it to my convenient list without having to remember the details required for the payment."
+    }
+  ],
+  "utter_faq/favoriteaccount": [
+    {
+      "text": "Favorite accounts can be referred to as those accounts to which you frequently engage in fund trans- fers or online transactions. You can go to “Favourite Accounts” and add or manage favourite link accounts. Enter the account number and name of the person or merchant with whom you frequently engage in online transactions to create a linked account."
+    }
+  ],
+  "utter_faq/wherecontact": [
+    {
+      "text": "Contact your bank customer care department or relevant bank official."
+    }
+  ],
+  "utter_faq/onlinemerchant": [
+    {
+      "text": "If you are a registered member of QFX, you can pay for movie tickets online by visiting the QFX site where you will be prompted with many payment options including payment through your bank ac- count. You can now pay using your bank account username and password."
+    }
+  ],
+  "utter_faq/messagefrombank": [
+    {
+      "text": "You will get an SMS from the bank confirming your online transactions."
+    }
+  ],
+  "utter_faq/requestcheckbook": [
+    {
+      "text": "To make a cheque book request, go to Cheque Book on the list of activities/ services such as the one shown in the screen below. You will be required to enter your account number, the number of leaves in the cheque book (either 10 or 20) and the reason for making such request. Click send to send the cheque book request to your bank."
+    }
+  ],
+  "utter_faq/travelabroad": [
+    {
+      "text": "Make sure that you login through the virtual keyboard. Refrain from using public hotspots or wireless networks as they have very weak security settings. Refrain from using public computers while using online banking. In case you wish to receive your one time password in your international number, you can directly contact your bank to change it so that you can do the transaction from abroad."
+    }
+  ],
+  "utter_faq/lostmobile": [
+    {
+      "text": "You must immediately visit your bank to disable OTP and switch to normal transaction."
+    }
+  ],
+  "utter_faq/changemobilenumber": [
+    {
+      "text": "Notify your bank that you changed your mobile number. Your bank will update your new mobile num- ber in their system and you will be able to receive OTP in that new number."
+    }
+  ],
+  "utter_faq/dontusemobile": [
+    {
+      "text": "Online transaction is not possible without OTP which is sent through SMS to your mobile. You can only make use of other online services such as view Account Statement, make a cheque book request or cheque stop request."
+    }
+  ],
+  "utter_faq/completeonlinetransaction": [
+    {
+      "text": "Ensure that you carefully check your statement after each online transaction activity. In case the de- tails of the transaction do not match with the online statement, contact your bank immediately."
+    }
+  ],
+  "utter_faq/reducecost": [
+    {
+      "text": "Online banking is very convenient as you do not have to physically be in the bank to make fund trans- fers or go to the merchant to pay their bills. Therefore, it reduces your time and cost. Since it requires highly encrypted passwords for online banking, it is very difficult, if not impossible, for intruders to hack your password."
+    }
+  ]
+}

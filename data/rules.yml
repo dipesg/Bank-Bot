@@ -1,0 +1,352 @@
+version: "3.1"
+
+rules:
+- rule: Information about faq
+  steps:
+  - intent: info_faq
+  - action: utter_ask_faq_area
+
+- rule: Services bot provide
+  steps:
+  - intent: about_services
+  - action: utter_services
+
+- rule: pin verification
+  steps:
+    - intent: pin
+    - action: action_transfer_money
+
+- rule: Implementation of the Single stage fallback | ask user to choose what they meant
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+
+- rule: Implementation of the Single stage fallback | user want to know about atm location
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+  - intent: location
+  - action: utter_which_location
+
+- rule: Implementation of the Single stage fallback | user want to know about faq
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+  - intent: faq
+  - action: utter_faq_type
+
+- rule: Implementation of the Single stage fallback | call utter_out_of_scope fallback if user is not ok
+  steps:
+  - action: action_default_ask_affirmation
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: Schedule a reminder in minutes
+  steps:
+  - intent: ask_minutes
+    entities:
+    - PEOPLE
+  - action: action_set_reminder_fast
+
+- rule: Cancel a reminder
+  steps:
+  - intent: ask_forget_reminders
+  - action: action_forget_reminders
+
+- rule: Trigger `action_react_to_reminder` for `EXTERNAL_reminder`
+  steps:
+  - intent: EXTERNAL_reminder
+  - action: action_react_to_reminder
+
+- rule: Enquire Balance
+  steps:         
+    - intent: bal_enquiry_by_text
+    # - action: utter_choose_account
+    # - intent: current
+    - action: action_on_it
+
+# - rule:
+#   steps:
+#     - intent: fund_transfer_by_text
+#     - action: utter_choose_account
+
+- rule: activate transfer_form 
+  steps:
+    - or:
+      - intent: fund_transfer_by_text 
+      - intent: amount      
+    - action: transfer_form
+    - active_loop: transfer_form
+
+- rule: transfer money + Balance Enquiry
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: bal_enquiry_by_text
+  - action: action_on_it
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + Balance Enquiry 
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money +  FAQ
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: faq
+  - action: utter_faq
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + FAQ
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + Nearest_ATM_Location_Finder 
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: location
+  - action: action_query_map
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + Nearest_ATM_Location_Finder
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + out-of-scope
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + out-of-scope
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + fallback case + out-of-scope
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + out-of-scope
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + fallback case + fund_transfer_by_text
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + fallback case + fund_transfer_by_text
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + fallback case + balance_enquiry
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+  - intent: bal_enquiry_by_text
+  - action: action_on_it
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + fallback case + balance_enquiry
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + fallback case + Nearest_ATM_Location_Finder
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_ask_affirmation
+  - intent: location
+  - action: action_on_it
+  - intent: fund_transfer_by_text
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + fallback case + Nearest_ATM_Location_Finder
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + user type money
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: amount
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + user type money
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: transfer money + user type receiver-account-number
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: send_money
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Submit form transfer money + user type receiver account number
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_statement
+  - action: utter_confirm
+  - intent: confirm
+  - action: utter_ask_pin
+  - intent: pin
+  - action: action_transfer_money
+  - action: action_reset_all_slots
+
+- rule: utter help after 2 fallbacks
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: out_of_scope
+  - action: utter_help_message
+
+

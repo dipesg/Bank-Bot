@@ -1,0 +1,60 @@
+version: "3.1"
+stories:
+- story: greet + enquiry balance + beginning of flow
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: Schedule a reminder in minutes_story
+  steps:
+  - intent: ask_minutes
+  - action: action_set_reminder_fast
+
+- story: Frequently Asked Question Answering
+  steps:
+    # - intent: faq_knowing
+    # - action: utter_faq_type
+    - intent: faq
+    - action: utter_faq
+- story: Nearest_ATM_Location_Finder
+  steps:
+    # - intent: Nearest_ATM_Location_Finder
+    # - action: utter_which_location
+    - intent: location
+    - action: action_query_map
+
+- story: Enquire Balance
+  steps:         
+    - intent: bal_enquiry_by_text
+    # - action: utter_choose_account
+    # - intent: current
+    - action: action_on_it
+
+- story: utter help after 2 fallbacks
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: out_of_scope
+  - action: utter_help_message
+
+# - story: choose_ current_account
+#   steps:
+#     - intent: fund_transfer_by_text
+#     - action: utter_choose_account
+
+- story: Information about faq
+  steps:
+  - intent: info_faq
+  - action: utter_ask_faq_area
+
+- story: Services bot provides
+  steps:
+  - intent: about_services
+  - action: utter_services
+
+- story: finish flow
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye

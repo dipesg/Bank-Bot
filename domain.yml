@@ -1,0 +1,454 @@
+version: "3.1"
+
+intents:
+  - greet
+  - inform
+  - enquiry
+  - goodbye
+  - faq
+  - deny
+  - location
+  - password
+  - faq_knowing
+  - fund_transfer
+  - current
+  - news
+  - confirm
+  - ask_minutes
+  - EXTERNAL_reminder
+  - ask_forget_reminders
+  - fund_transfer_by_text
+  - bal_enquiry_by_text
+  - send_money
+  - about_services
+  - info_faq
+  - amount
+
+entities:
+  - name
+  - account_number
+  - amount-of-money
+  - confirm_form
+  - sender_account
+  - receiver_account
+  - place
+  - user_id
+  - passkey
+  - faq_ques
+  - bal_ques
+  - fund_ques
+  - atm_ques
+  - sender_acc
+  - receiver_acc
+  - amount_money
+  - PEOPLE
+  - min
+  - pin_number
+
+slots:
+  pinn:
+    type: float
+    mappings:
+     - type: from_entity
+       entity: pin_number
+
+  current_account:
+    type: float
+    initial_value: 1111
+    mappings:
+     - type: custom
+
+  name:
+   type: text
+   initial_value: 'Dipesh Silwal'
+   mappings:
+     - type: custom
+  #  mappings:
+  #   - type: from_entity
+  #     entity: name
+  account_number:
+   type: float
+   mappings:
+    - type: from_entity
+      entity: sender_acc
+  available_balance:
+   type: float
+   mappings:
+    - type: custom
+  PERSON:
+   type: text
+   mappings:
+    - type: from_entity
+      entity: PEOPLE
+  yesorno: 
+   type: text
+   mappings:
+    - type: from_entity
+      entity: confirm_form
+  required_password:
+   type: text
+   mappings:
+    - type: from_entity
+      entity: passkey
+  user-id:
+   type: float
+   mappings:
+    - type: from_entity
+      entity: user_id
+  amount_transferred:
+    type: any
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+  place_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: place
+  sender-account-number:
+   type: float
+   mappings:
+   - type: from_entity
+     entity: sender_acc
+  receiver_account_number:
+   type: float
+   mappings:
+   - type: from_entity
+     entity: receiver_acc
+  amount_of_money:
+   type: float
+   mappings:
+   - type: from_entity
+     entity: amount_money
+  from-minute:
+   type: float
+   mappings:
+   - type: from_entity
+     entity: min
+  from-hour:
+   type: float
+   mappings:
+   - type: from_entity
+     entity: hr
+forms:
+  transfer_form:
+    ignored_intents: 
+    - faq
+    required_slots:
+        - receiver_account_number
+        - amount_of_money
+  verify_form:
+    required_slots:
+        - user-id
+        - required_password
+
+
+actions:
+  - utter_greet
+  - action_on_it
+  - utter_goodbye 
+  - utter_faq
+  - action_transfer_money
+  - utter_ask_transfer_money
+  - action_query_map
+  - utter_receiver_account
+  - verify_password
+  - utter_enter_password_and_id
+  - utter_enquire
+  - utter_transfer
+  - utter_which_location
+  - action_service
+  - utter_tele_greet
+  - utter_ask_amount_of_money
+  - utter_ask_receiver_account_number
+  - utter_ask_sender-account-number
+  - utter_ask_continue
+  - utter_continue
+  - action_button
+  - action_news_list
+  - action_resources_list
+  - action_react_to_reminder
+  - action_forget_reminders
+  - action_carousels
+  - action_set_reminder_fast
+  - action_reset_all_slots
+  - utter_choose
+  - utter_your_account_name
+  - action_handle_fallback
+  - action_default_ask_affirmation
+  - action_switch_forms_ask
+  - action_switch_forms_affirm
+  - action_switch_back_ask
+  - utter_help_message
+  - action_set_sender_account_number
+  - validate_transfer_form
+  - action_confirm_pin
+  - utter_confirm
+  - utter_ask_pin
+  - utter_statement
+  - utter_ask_faq_area
+  - utter_services
+
+responses:
+  utter_faq/internetbanking:
+  - text: |
+      { "en": "Internet Banking is a convenient and safe transaction banking service offered online. You can use Internet Banking to make fund transfers, pay bills or view statements through the Internet. "
+      "np": "इन्टरनेट बैंकिङ यक अनलाइन सुविधाजनक र सुरक्षित कारोबार बैंकिङ सेवा हो।"}
+  
+  utter_faq/secureinternetbanking:
+  - text: "We take every precaution to make your online banking experience safe and secured. Internet Banking offers optimal protection of your account through our Web Server Security SSL (Secure Socket Layer) to create encrypted link between web server and browser. Encryption is a process that transforms sensitive information into unrecognizable characters before they are sent over the Internet and helps keep your information private between the bank’s computer system and your internet browser. "
+  
+  utter_faq/practiceinfosafe:
+  - text: "Safe and secured online experience demands that you engage into the following practices to safe- guard your online information. a. Beware of phishing scams Make sure that you always login to your internet banking account directly via your bank website, and not through links that are not from your bank. b. Have strong passwords Make sure that you create strong passwords which are at least 8 characters long having capital letters, numbers, and special characters such as @, #, &, !, etc. Intruders can easily hack weak passwords. Also regularly change your passwords. c. Secure your email accounts Set strong passwords for your email accounts because cybercriminals can easily pilfer your sen sitive information. Ensure that the passwords are unique and different from your social network ing accounts. d. Refrain from performing banking transactions over unsecured wireless networks/ public computers Because wireless networks have weak security settings, it is important that you review and en hance your wireless (Wi-Fi) network settings. e. Use virtual Keyboard in Login Panel Virtual Keyboard is the precautionary measure that protects you against malicious key logger programs which might have infected your computer. We strongly advise you to use it in case you are doing internet banking login from different computer. f. Secure your devices Password protects your mobile phones, tablets or PCs. Have strong passwords and security PINs for these devices.g. Switch to statements Intruders can gain access to your paper documents having sensitive information including your banking details. Therefore ensure that you make use of statements and secure them so that they cannot be stolen. Don’t engage in communication with unsolicited emails or correspondence that requests your personal banking information. Ensure that you always log out of your account and close the browser once you are done. Update all your browsers, operating systems, apps and virus, and malware protection software. "
+
+  utter_faq/visitingsecuredinternetsite:
+  - text: "Our online banking site address starts with https: which is a strong indication that it is safe and secure. Hypertext Transfer Protocol Secure (HTTPS) is a communications protocol for secure communication over a computer network. Additionally, the VeriSign logo on the login page is also an indication that the site you are about to visit is secured. "
+
+  utter_faq/transaction:
+  - text: "You can perform a variety of transactions as the ones listed below: a. Fund transfers • Transfer fund between your own bank accounts • Transfer funds to any of your bank accounts b. Bill payment c. Top-up/ recharge cards"
+
+  utter_faq/bankingservice:
+  - text: "a. View statement b. Request account statement c. Cheque book request d. Cheque stop request e. Manage linked accounts"
+
+  utter_faq/fundtransfer:
+  - text: "You can perform two types of fund transfer activities on the site. They are: a. Transfer fund between your own bank accounts b. Transfer funds to any of your bank accounts "
+
+  utter_faq/separateregistrationform:
+  - text: "No, once you are registered as an internet banking customer, you are automatically entitled to Internet Banking bill payment service."
+
+  utter_faq/onetimepassword:
+  - text: |
+      {"en": "One Time Password (OTP) is an additional security feature added to secure your account from online fraud. OTP is sent to your mobile phone before you can perform fund transfer or online transactions. OTP is confidential and must not be shared with anyone—not even if the person who claims to be a bank official. You have to enter the OTP within 3 minutes of receiving it through SMS to complete fund transfer or online transaction. Make sure you read the details of the message sent to you through SMS along with the OTP. ",
+      "np": "OTP तपाईको खातालाई अनलाइन ठगीबाट सुरक्षित गर्न थपिएको अतिरिक्त सुरक्षा सुविधा हो ।"}
+
+  utter_faq/otpwhenusernameandpasswordisgiven:
+  - text: "This is for extra security and protection of your account from fraud. "
+
+  utter_faq/askedtoenterotp:
+  - text: "You will be asked to enter OTP before you can make fund transfer or online transactions. "
+
+  utter_faq/sameotpmultipletimes:
+  - text: "No, a single OTP is sent to you before you can perform a single fund transfer activity or a single online transaction. You cannot use the same OTP multiple times because we generate and send you unique OTPs for every transaction or fund transfer activity. "
+
+  utter_faq/forgetusernameorpassword:
+  - text: |
+     {"en": "You must contact your bank to get a new username and password.",
+     "np": "नयाँ प्रयोगकर्ता नाम र पासवर्ड प्राप्त गर्न तपाईंले आफ्नो बैंकलाई सम्पर्क गर्नुपर्छ।" }
+
+  utter_faq/changeusernameandpassword:
+  - text: "You can only change the login password, not the username. Your bank official may also change your password upon request or in case you forget your password."
+
+  utter_faq/statement:
+  - text: "You need to go to AC Statement on the site after you log in. Then select “Statement” and adjust the date on the right and enter your account number to get the statement of the required period of time. "
+
+  utter_faq/esewapayment:
+  - text: "You can go to “Bill Payment”, click the first option i.e. “Bill Payment” to make esewa payment. Click on Select One in the “Pay For” field where you can se- lect “ESEWA” to make the necessary payment. "
+
+  utter_faq/paymentunsuccessful:
+  - text: "In such cases, you will have attempt the payment manually or you will have to contact your bank at the nearest counter. "
+
+  utter_faq/bestbrowser:
+  - text: "You can use browsers such the Google Chrome or Mozilla Firefox, Edge, Safari for best online banking experience. Please ensure that the browser you use is up-to-date. We do not recommend Internet Explorer for internet banking."
+
+  utter_faq/savingmypayment:
+  - text: "Saving my payments allows me to link my payments with my favorite name. So once I get the details of the payment with amount, merchant name, and numbers; I can link it to my convenient list without having to remember the details required for the payment."
+
+  utter_faq/favoriteaccount:
+  - text: "Favorite accounts can be referred to as those accounts to which you frequently engage in fund trans- fers or online transactions. You can go to “Favourite Accounts” and add or manage favourite link accounts. Enter the account number and name of the person or merchant with whom you frequently engage in online transactions to create a linked account."
+
+  utter_faq/wherecontact:
+  - text: "Contact your bank customer care department or relevant bank official."
+
+  utter_faq/onlinemerchant:
+  - text: "If you are a registered member of QFX, you can pay for movie tickets online by visiting the QFX site where you will be prompted with many payment options including payment through your bank ac- count. You can now pay using your bank account username and password."
+
+  utter_faq/messagefrombank:
+  - text: "You will get an SMS from the bank confirming your online transactions."
+
+  utter_faq/requestcheckbook:
+  - text: "To make a cheque book request, go to Cheque Book on the list of activities/ services such as the one shown in the screen below. You will be required to enter your account number, the number of leaves in the cheque book (either 10 or 20) and the reason for making such request. Click send to send the cheque book request to your bank."
+
+  utter_faq/travelabroad:
+  - text: "Make sure that you login through the virtual keyboard. Refrain from using public hotspots or wireless networks as they have very weak security settings. Refrain from using public computers while using online banking. In case you wish to receive your one time password in your international number, you can directly contact your bank to change it so that you can do the transaction from abroad."
+
+  utter_faq/lostmobile:
+  - text: "You must immediately visit your bank to disable OTP and switch to normal transaction."
+
+  utter_faq/changemobilenumber:
+  - text: "Notify your bank that you changed your mobile number. Your bank will update your new mobile num- ber in their system and you will be able to receive OTP in that new number."
+
+  utter_faq/dontusemobile:
+  - text: "Online transaction is not possible without OTP which is sent through SMS to your mobile. You can only make use of other online services such as view Account Statement, make a cheque book request or cheque stop request."
+
+  utter_faq/completeonlinetransaction:
+  - text: "Ensure that you carefully check your statement after each online transaction activity. In case the de- tails of the transaction do not match with the online statement, contact your bank immediately."
+
+  utter_faq/reducecost:
+  - text: "Online banking is very convenient as you do not have to physically be in the bank to make fund trans- fers or go to the merchant to pay their bills. Therefore, it reduces your time and cost. Since it requires highly encrypted passwords for online banking, it is very difficult, if not impossible, for intruders to hack your password."
+
+  utter_ask_rephrase:
+  - text: |
+     {"en": "I am sorry,I didn't quite understand that. Could you rephrase?",
+     "np": "मलाई माफ गर्नुहोस्, मैले त्यो राम्ररी बुझिन। कृपया तपाइँ पुन दोहोर्यानुहोस ।"}
+
+  utter_transfer_complete:
+  - text: |
+     "en": "Successfully transferred rs {amount_of_money} from account number {current_account} to account number {receiver_account_number}.",
+     "np": "रु {amount_of_money} सफलतापूर्वक खाता नम्बर {receiver_account_number} मा पठाइयको छ"
+
+  utter_transfer_cancelled:
+  - text: |
+     {"en": "Transfer cancelled.",
+     "np": "पैसा पठाउन रद्द भयो"
+
+
+  utter_faq_type:
+  - text: |
+     {"en": "Please enter a question you want to know about Internet Banking.",
+     "np": "कृपया इन्टरनेट बैंकिङको बारेमा जान्न चाहेको प्रश्न लेख्नुहोस।"
+
+
+  utter_which_location:
+  - text: |
+     {"en": Please enter the place of which you want to find ATM booth,
+     "np": कृपया तपाईंले एटीएम बुथ फेला पार्न चाहनुभएको ठाउँ लेख्नुहोस ।
+
+  utter_password_incorrect:
+  - text: "Sorry password is incorrect, TRY AGAIN!!"
+
+
+  utter_ask_faq_area:
+  - text: |
+      {"en": You can ask me anything about following topics:
+      - Internet Banking
+      - About Security of Internet Banking
+      - Fund Transfering
+      - For additional information visit [here](https://www.nabilbank.com/individual),
+
+      "np": तपाईले मलाई निम्न विषयहरूको बारेमा सोध्न सक्नुहुन्छ:
+      - इन्टरनेट बैंकिङको बारेमा
+      - इन्टरनेट बैंकिङ कतिको सुरक्छित छ भन्ने बारे 
+      - पैसा पठाउने बारे
+      - थप जानकारीको लागि यहाँ https://www.nabilbank.com/individual जानुहोस}
+
+
+  utter_greet:
+  - text: |
+      {"en": Hey! I am your assistant, I can help you on:
+      - Transfering fund
+      - Balance enquiry
+      - Frequently Asked Question Answering
+      - Finding Nearest ATM Location Finder 
+      - Function to set reminder to transfer fund,
+      "np": म तपाईंको सहायक हुँ, म तपाईंलाई निम्न कुरामा मद्दत गर्न सक्छु:
+      - पैसा पठाउने
+      - रकम बुज्ने
+      - प्रायः सोधिने प्रश्नको उत्तर
+      - एटीएम पत्ता लगाउने}
+    
+  # utter_choose_account:
+  # - text: "Please choose an account type."
+  #   buttons:
+  #   - payload: '/current'
+  #     title: 'Current Account'
+  #   - payload: '/saving'
+  #     title: 'Saving Account'
+
+  utter_ask_receiver_account_number:
+  - text: |
+     {"en": Please enter a receiver account number,
+     "np": कृपया पाउनेको खाता नम्बर लेख्नुहोस।
+     }
+
+  utter_ask_amount_of_money:
+  - text: |
+     {"en": Please enter a amount of money you want to send,
+     "np": कृपया तपाईंले पठाउन चाहनुभएको रकम लेख्नुहोस ।}
+
+  utter_goodbye:
+  - text: |
+     {"en": Thank You for using our service have a great day😊!!,
+     "np": हाम्रो सेवा प्रयोग गर्नु भएकोमा धन्यवाद तपाईको दिन राम्रो होस😊!!}
+
+  utter_default:
+  - text: |
+     {"en": Sorry, Didn't understand. Please say again,
+     "np": माफ गर्नुहोस्, मैले बुझिन। कृपया फेरि भन्नुहोस्}
+
+  utter_please_rephrase:
+  - text: |
+     {"en": I'm sorry, I didn't quite understand that. Could you rephrase?,
+     "np": माफ गर्नुहोस्, मैले त्यो राम्ररी बुझिन। कृपया फेरि लेख्नुहोस?}
+
+  utter_help_message:
+  - text: |
+      {"en": If you want to know anything beyond my capability you can contact human support on 1234567890 ,
+
+      "np": यदि तपाइँ मेरो क्षमता भन्दा बाहिर केहि जान्न चाहनुहुन्छ भने तपाइँ मानव सहायक लाई यो न्ं १२३४५६७८९० मा सम्पर्क गर्न सक्नुहुन्छ ।
+
+      }
+
+  utter_statement:
+  - text: |
+     "en": Current transaction details
+     - Receiver Account Number = {receiver_account_number}
+     - Amount = {amount_of_money}
+
+     "np": हालको लेनदेन विवरण
+     - पाउनेको खाता न्ं  = {receiver_account_number}
+     - पठाउने रकम = {amount_of_money}
+     
+
+  utter_confirm: 
+  - text: Please confirm
+    buttons:
+    - payload: '/confirm' 
+      title: 'Confirm' 
+
+    - payload: '/confirm'
+      title: 'कृपया पक्का गर्नुहोस' 
+
+  utter_services:
+  - text: |
+     {"en": I provides following services:
+      - Transfering fund
+      - Balance enquiry
+      - Frequently Asked Question Answering
+      - Finding Nearest ATM Location Finder 
+      - Function to set reminder to transfer fund.
+      "np": म निम्न सेवाहरू प्रदान गर्दछु:
+      - पैसा पठाउने
+      - रकम बुज्ने
+      - प्रायः सोधिने प्रश्नको उत्तर
+      - एटीएम पत्ता लगाउने
+        }
+
+  utter_ask_pin:
+  - text: |
+         {"en": Please enter your pin. 
+         "np": कृपया आफ्नो पिन लेख्नुहोस
+          }
+
+
+  utter_out_of_scope:
+  - text: |
+     '{"en": "Sorry, I can't handle that request. I can handle:
+     - Fund Transfer
+     - Balance Enquiry
+     - Nearest atm location finder
+     If you want to perform one of the service please ask me."
+
+     "np": "माफ गर्नुहोस्, म त्यो अनुरोध सम्हाल्न सक्दिन। म निम्न अनुरोध सम्हाल्न सक्छु:
+     - पैसा पठाउने
+     - रकम बुज्ने
+     - प्रायः सोधिने प्रश्नको उत्तर
+     - एटीएम पत्ता लगाउने
+     यदि तपाईं कुनै सेवा गर्न चाहनुहुन्छ भने कृपया मलाई सोध्नुहोस्"
+     }'
+    
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
